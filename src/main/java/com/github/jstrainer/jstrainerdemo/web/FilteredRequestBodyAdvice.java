@@ -1,8 +1,9 @@
-package com.github.jstrainer.jstrainerdemo.web.rest;
+package com.github.jstrainer.jstrainerdemo.web;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -15,7 +16,8 @@ import com.github.jstrainer.Strainer;
 @ControllerAdvice
 public class FilteredRequestBodyAdvice implements RequestBodyAdvice {
 
-	private final Strainer strainer = new Strainer();
+	@Autowired
+	private Strainer strainer;
 
 	@Override
 	public boolean supports(MethodParameter methodParameter, Type valueType,
